@@ -2,6 +2,7 @@ package com.lhp.copy.basicsample.db.entity;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.lhp.copy.basicsample.model.Product;
 
@@ -13,7 +14,9 @@ import com.lhp.copy.basicsample.model.Product;
 public class ProductEntity implements Product {
     @PrimaryKey
     private int id;
+    @NonNull
     private String name;
+    @NonNull
     private String description;
     private int price;
 
@@ -21,25 +24,27 @@ public class ProductEntity implements Product {
     public int getId() {
         return id;
     }
-    public void setId(int id){
+    public void setId( int id){
         this.id = id;
     }
 
     @Override
+    @NonNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName( @NonNull String name) {
         this.name = name;
     }
 
     @Override
+    @NonNull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@NonNull String description) {
         this.description = description;
     }
 
@@ -53,7 +58,7 @@ public class ProductEntity implements Product {
     }
 
     public ProductEntity(){}
-    public ProductEntity(int id, String name, String description, int price){
+    public ProductEntity(int id,@NonNull String name,@NonNull String description, int price){
         this.id = id;
         this.name = name;
         this.description = description;

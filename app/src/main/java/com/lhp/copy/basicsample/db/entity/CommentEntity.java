@@ -4,6 +4,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.lhp.copy.basicsample.model.Comment;
 
@@ -22,8 +23,10 @@ import java.util.Date;
         indices = {@Index(value = "productId")})
 public class CommentEntity implements Comment {
     @PrimaryKey(autoGenerate = true)
+
     private int id;
     private int productId;
+    @NonNull
     private String text;
     private Date postedAt;
 
@@ -46,15 +49,17 @@ public class CommentEntity implements Comment {
     }
 
     @Override
+    @NonNull
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(  @NonNull String text) {
         this.text = text;
     }
 
     @Override
+    @NonNull
     public Date getPostedAt() {
         return postedAt;
     }
@@ -66,7 +71,7 @@ public class CommentEntity implements Comment {
     public CommentEntity() {
     }
 
-    public CommentEntity(int id, int productId, String text, Date postedAt) {
+    public CommentEntity(int id, int productId,  @NonNull String text, Date postedAt) {
         this.id = id;
         this.productId = productId;
         this.text = text;

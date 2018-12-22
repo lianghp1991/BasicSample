@@ -7,6 +7,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.lhp.copy.basicsample.BasicApp;
 import com.lhp.copy.basicsample.DataRepository;
@@ -36,6 +37,9 @@ public class ProductViewModel extends AndroidViewModel {
     public LiveData<List<CommentEntity>> getComments(){
         return mObservableComments;
     }
+    public LiveData<ProductEntity> getObservableProduct(){
+        return mObservableProduct;
+    }
     public LiveData<ProductEntity> getProduct(){
         return mObservableProduct;
     }
@@ -53,7 +57,7 @@ public class ProductViewModel extends AndroidViewModel {
 
         private final DataRepository mDataRepository;
 
-        public Factory(Application application, int productId){
+        public Factory(@Nullable Application application, int productId){
             mApplication = application;
             mProductId = productId;
             mDataRepository = ((BasicApp)application).getRepository();

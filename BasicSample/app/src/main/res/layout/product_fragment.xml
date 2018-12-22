@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="isLoading"
             type="boolean">
@@ -23,11 +25,11 @@
         android:layout_height="match_parent"
         android:background="@color/comment_light_background"
         android:orientation="vertical">
-        <!--<include
+        <include
             layout="@layout/product_item"
             app:product="@{productViewModel.product}">
 
-        </include>-->
+        </include>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -38,8 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/loading_comments"
-                 />
-            <!--android:visibility="@{isLoading}"-->
+                app:visibleGone="@{isLoading}" />
+
 
             <FrameLayout
                 android:id="@+id/comments_list_wrapper"
@@ -48,12 +50,12 @@
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/comment_lsit"
-                    android:contentDescription="@string/cd_comments_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/cd_comments_list"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                   >
-                    <!--app:visibleGone="@{!isLoading}"-->
+                    app:visibleGone="@{!isLoading}">
+
                 </android.support.v7.widget.RecyclerView>
             </FrameLayout>
         </FrameLayout>
